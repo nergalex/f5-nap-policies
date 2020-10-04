@@ -1,6 +1,6 @@
 {
     "policy":{
-    "name":"evasions_enabled",
+    "name":"base_owasp_top_10",
     "template":{
         "name":"POLICY_TEMPLATE_NGINX_BASE"
     },

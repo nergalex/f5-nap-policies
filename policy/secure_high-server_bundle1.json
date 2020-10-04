@@ -1,6 +1,6 @@
 {
     "policy":{
-    "name":"evasions_enabled",
+    "name":"secure_high-server_bundle1",
     "template":{
         "name":"POLICY_TEMPLATE_NGINX_BASE"
     },
