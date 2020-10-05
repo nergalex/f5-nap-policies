@@ -1,0 +1,3690 @@
+{
+"policy": {
+		"name": "nginx_default_policy",
+		"description": "Default Policy for generic apps protected by WAF on NGINX",
+		"template": {
+			"name": "POLICY_TEMPLATE_NGINX_BASE"
+		},
+		"applicationLanguage": "utf-8",
+		"enforcementMode": "blocking",
+		"caseInsensitive": false,
+		"enablePassiveMode": false,
+		"general": {
+			"allowedResponseCodes": [
+				400, 
+				401,
+				404,
+				407,
+				417,
+				503
+			],			
+			"maskCreditCardNumbersInRequest": true,
+		},		
+		"cookie-settings": {
+			"maximumCookieHeaderLength": "4096"
+		},
+		"header-settings": {
+			"maximumHttpHeaderLength": "4096"
+		},
+        "signature-settings": {
+			"attackSignatureFalsePositiveMode": "detect-and-allow",
+			"minimumAccuracyForAutoAddedSignatures": "medium"
+        },	
+		"signature-sets": [
+			{
+				"name": "Generic Detection Signatures (High/Medium Accuracy)",
+				"block": false,
+				"alarm": true
+			},
+			{
+				"name": "Command Execution Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Cross Site Scripting Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Directory Indexing Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Information Leakage Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "OS Command Injection Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Predictable Resource Location Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Remote File Include Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "SQL Injection Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Authentication/Authorization Attacks Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "XML External Entity (XXE) Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "XPath Injection Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Buffer Overflow Signatures",
+				"block": false,
+				"alarm": true				
+			},
+			{
+				"name": "Denial of Service Signatures",
+				"block": false,
+				"alarm": true				
+			},			
+			{
+				"name": "High Accuracy CVE Signatures",
+				"block": true,
+				"alarm": true				
+			},			
+			{
+				"name": "All CVE Signatures",
+				"block": false,
+				"alarm": true				
+			}
+		],		
+		"blocking-settings": {
+			"violations": [
+				{
+					"name": "VIOL_FILETYPE",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_BLACKLISTED_IP",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_COOKIE_MALFORMED",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_DATA_GUARD",
+					"alarm": true,
+					"block": true
+				},
+				{
+					"name": "VIOL_HEADER_LENGTH",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_HTTP_PROTOCOL",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_JSON_FORMAT",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_JSON_MALFORMED",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_METHOD",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_QUERY_STRING_LENGTH",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_REQUEST_MAX_LENGTH",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_URL_LENGTH",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_URL_METACHAR",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_XML_FORMAT",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_XML_MALFORMED",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_RATING_THREAT",
+					"alarm": true,
+					"block": true
+				},
+				{
+					"name": "VIOL_RATING_NEED_EXAMINATION",
+					"alarm": false,
+					"block": false
+				},
+				{
+					"name": "VIOL_PARAMETER_MULTIPART_NULL_VALUE",
+					"alarm": false,
+					"block": false
+				},
+				{
+					"name": "VIOL_PARAMETER_NAME_METACHAR",
+					"alarm": true,
+					"block": false
+				},
+				{
+					"name": "VIOL_PARAMETER_VALUE_METACHAR",
+					"alarm": true,
+					"block": false
+				}
+			],
+			"http-protocols": [
+				{
+					"description": "Body in GET or HEAD requests",
+					"enabled": false
+				},
+				{
+					"description": "Content length should be a positive number",
+					"enabled": true
+				},
+				{
+					"description": "High ASCII characters in headers",
+					"enabled": true
+				},
+				{
+					"description": "Unparsable request content",
+					"enabled": true
+				},
+				{
+					"description": "Bad multipart/form-data request parsing",
+					"enabled": true
+				},
+				{
+					"description": "Multiple host headers",
+					"enabled": true
+				},
+				{
+					"description": "No Host header in HTTP/1.1 request",
+					"enabled": true
+				},
+				{
+					"description": "CRLF characters before request start",
+					"enabled": true
+				},
+				{
+					"description": "Check maximum number of headers",
+					"enabled": true,
+					"maxHeaders": 50
+				},
+				{
+					"description": "Header name with no header value",
+					"enabled": false
+				},
+				{
+					"description": "Null in request",
+					"enabled": true
+				},
+				{
+					"description": "Several Content-Length headers",
+					"enabled": true
+				},
+				{
+					"description": "Bad multipart parameters parsing",
+					"enabled": true
+				},
+				{
+					"description": "Check maximum number of parameters",
+					"enabled": true,
+					"maxParams": 500
+				},
+				{
+					"description": "Bad host header value",
+					"enabled": true
+				},
+				{
+					"description": "Bad HTTP version",
+					"enabled": true
+				},
+				{
+					"description": "Host header contains IP address",
+					"enabled": true
+				},
+				{
+					"description": "POST request with Content-Length: 0",
+					"enabled": false
+				}
+			],
+			"evasions": [
+				{
+					"description": "%u decoding",
+					"enabled": true
+				},
+				{
+					"description": "Apache whitespace",
+					"enabled": true
+				},
+				{
+					"description": "%u decoding",
+					"enabled": true
+				},
+				{
+					"description": "Bad unescape",
+					"enabled": true
+				},
+				{
+					"description": "Bare byte decoding",
+					"enabled": true
+				},
+				{
+					"description": "Directory traversals",
+					"enabled": true
+				},
+				{
+					"description": "IIS backslashes",
+					"enabled": true
+				},
+				{
+					"description": "IIS Unicode codepoints",
+					"enabled": true
+				},			
+				{
+					"description": "Multiple decoding",
+					"enabled": true,
+					"maxDecodingPasses": 3					
+				}						
+			]
+        },
+		"filetypes": [
+			{
+				"name": "*",
+				"type": "wildcard",
+				"allowed": true,
+				"checkPostDataLength": false,
+				"postDataLength": 4096,
+
+				"checkRequestLength": false,
+				"requestLength": 8192,
+
+				"checkUrlLength": true,
+				"urlLength": 2048,
+
+				"checkQueryStringLength": true,
+				"queryStringLength": 2048,
+
+				"responseCheck": false
+			},
+			{
+				"name": "bak",
+				"allowed": false
+			},
+			{
+				"name": "bat",
+				"allowed": false
+			},
+			{
+				"name": "bck",
+				"allowed": false
+			},
+			{
+				"name": "bkp",
+				"allowed": false
+			},
+			{
+				"name": "cfg",
+				"allowed": false
+			},
+			{
+				"name": "conf",
+				"allowed": false
+			},
+			{
+				"name": "config",
+				"allowed": false
+			},
+			{
+				"name": "ini",
+				"allowed": false
+			},
+			{
+				"name": "log",
+				"allowed": false
+			},
+			{
+				"name": "old",
+				"allowed": false
+			},
+			{
+				"name": "sav",
+				"allowed": false
+			},
+			{
+				"name": "save",
+				"allowed": false
+			},
+			{
+				"name": "temp",
+				"allowed": false
+			},
+			{
+				"name": "tmp",
+				"allowed": false
+			}
+		],
+		"data-guard": {
+			"enabled": true,
+			"maskData": true,
+			"creditCardNumbers": true,
+			"usSocialSecurityNumbers": true,
+			"enforcementMode": "ignore-urls-in-list",
+			"enforcementUrls": [],
+			"lastCcnDigitsToExpose": 4,
+			"lastSsnDigitsToExpose": 4
+		},
+		"methods": [
+			{
+				"name": "GET",
+				"actAsMethod": "GET"
+			},
+			{
+				"name": "POST",
+				"actAsMethod": "POST"
+			},
+			{
+				"name": "HEAD",
+				"actAsMethod": "GET"
+			},
+			{
+				"name": "PUT",
+				"actAsMethod": "POST"
+			},
+			{
+				"name": "PATCH",
+				"actAsMethod": "POST"
+			},
+			{
+				"name": "DELETE",
+				"actAsMethod": "POST"
+			},
+			{
+				"name": "OPTIONS",
+				"actAsMethod": "GET"
+			}	
+		]
+        "json-profiles": [
+			{
+                "name": "Default",
+				"description": "",
+                "defenseAttributes": {
+                    "maximumTotalLengthOfJSONData": "any",
+                    "maximumArrayLength": "any",
+                    "maximumStructureDepth": 25,
+                    "maximumValueLength": "any",
+                    "tolerateJSONParsingWarnings": true
+                },
+				"sensitiveData": [
+        		],	
+				"attackSignaturesCheck": true,				
+				"metacharElementCheck": true
+			}
+		]
+		"xml-profiles":[
+            {
+				"name": "Default",
+				"description": "",
+				"defenseAttributes": {
+					"maximumAttributesPerElement": "any",
+					"allowCDATA": true,
+					"maximumDocumentDepth": 32,
+					"maximumAttributeValueLength": "any",
+					"maximumChildrenPerElement": 4096	,
+					"maximumDocumentSize": 1024000,
+					"tolerateNumericNames": true,
+					"maximumElements": 512000,
+					"tolerateLeadingWhiteSpace": true,
+					"tolerateCloseTagShorthand": true,
+					"allowDTDs": true,
+					"maximumNameLength": "any",
+					"allowExternalReferences": true,
+					"maximumNSDeclarations": 64,
+					"maximumNamespaceLength": "any",
+					"allowProcessingInstructions": true
+				},
+				"attackSignaturesCheck": true,				
+		    }
+        ],
+		"character-sets": [
+        {
+            "characterSetType": "url",
+            "characterSet": [
+                {
+                    "isAllowed": false,
+                    "metachar": "0x0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x10"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x11"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x12"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x13"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x14"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x15"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x16"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x17"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x18"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x19"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x20"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x21"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x22"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x23"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x24"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x25"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x26"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x27"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x28"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x29"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x30"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x31"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x32"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x33"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x34"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x35"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x36"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x37"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x38"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x39"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x40"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x41"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x42"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x43"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x44"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x45"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x46"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x47"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x48"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x49"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x50"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x51"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x52"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x53"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x54"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x55"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x56"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x57"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x58"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x59"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x60"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x61"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x62"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x63"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x64"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x65"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x66"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x67"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x68"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x69"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x70"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x71"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x72"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x73"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x74"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x75"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x76"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x77"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x78"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x79"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7f"
+                }
+            ]
+        },
+        {
+            "characterSetType": "header",
+            "characterSet": [
+                {
+                    "isAllowed": false,
+                    "metachar": "0x0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x10"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x11"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x12"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x13"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x14"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x15"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x16"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x17"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x18"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x19"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x20"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x21"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x22"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x23"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x24"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x25"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x26"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x27"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x28"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x29"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x30"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x31"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x32"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x33"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x34"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x35"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x36"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x37"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x38"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x39"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x40"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x41"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x42"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x43"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x44"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x45"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x46"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x47"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x48"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x49"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x50"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x51"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x52"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x53"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x54"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x55"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x56"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x57"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x58"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x59"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x60"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x61"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x62"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x63"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x64"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x65"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x66"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x67"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x68"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x69"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x70"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x71"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x72"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x73"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x74"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x75"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x76"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x77"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x78"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x79"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x80"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x81"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x82"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x83"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x84"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x85"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x86"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x87"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x88"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x89"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x90"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x91"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x92"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x93"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x94"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x95"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x96"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x97"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x98"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x99"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xaa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xab"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xac"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xad"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xae"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xaf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xba"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xbb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xbc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xbd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xbe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xbf"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc0"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc1"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc2"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc3"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc4"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc5"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc6"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc7"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc8"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xc9"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xca"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xcb"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xcc"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xcd"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xce"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xcf"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd0"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd1"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd2"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd3"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd4"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd5"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd7"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd8"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xd9"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xda"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xdb"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xdc"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xdd"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xde"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xdf"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe0"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe1"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe2"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe3"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe4"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe5"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe6"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe7"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe8"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xe9"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xea"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xeb"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xec"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xed"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xee"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xef"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf0"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf1"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf2"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf3"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf4"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf5"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf7"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf8"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xf9"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xfa"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xfb"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xfc"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xfd"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xfe"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0xff"
+                }
+            ]
+        },
+        {
+            "characterSetType": "json-content",
+            "characterSet": [
+                {
+                    "isAllowed": false,
+                    "metachar": "0x0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x10"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x11"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x12"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x13"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x14"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x15"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x16"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x17"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x18"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x19"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x20"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x21"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x22"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x23"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x24"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x25"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x26"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x27"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x28"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x29"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x30"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x31"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x32"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x33"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x34"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x35"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x36"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x37"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x38"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x39"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x40"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x41"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x42"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x43"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x44"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x45"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x46"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x47"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x48"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x49"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x50"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x51"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x52"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x53"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x54"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x55"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x56"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x57"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x58"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x59"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x60"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x61"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x62"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x63"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x64"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x65"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x66"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x67"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x68"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x69"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x70"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x71"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x72"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x73"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x74"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x75"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x76"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x77"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x78"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x79"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7f"
+                }
+            ]
+        },
+        {
+            "characterSetType": "parameter-name",
+            "characterSet": [
+                {
+                    "isAllowed": false,
+                    "metachar": "0x0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x10"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x11"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x12"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x13"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x14"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x15"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x16"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x17"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x18"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x19"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x20"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x21"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x22"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x23"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x24"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x25"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x26"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x27"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x28"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x29"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x30"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x31"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x32"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x33"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x34"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x35"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x36"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x37"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x38"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x39"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x40"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x41"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x42"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x43"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x44"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x45"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x46"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x47"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x48"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x49"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x50"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x51"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x52"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x53"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x54"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x55"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x56"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x57"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x58"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x59"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x60"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x61"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x62"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x63"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x64"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x65"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x66"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x67"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x68"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x69"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x70"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x71"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x72"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x73"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x74"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x75"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x76"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x77"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x78"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x79"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7f"
+                }
+            ]
+        },
+        {
+            "characterSetType": "parameter-value",
+            "characterSet": [
+                {
+                    "isAllowed": false,
+                    "metachar": "0x0"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x2"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x4"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x6"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x8"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x9"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xa"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xb"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xc"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xd"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xe"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0xf"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x10"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x11"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x12"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x13"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x14"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x15"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x16"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x17"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x18"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x19"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x1f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x20"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x21"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x22"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x23"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x24"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x25"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x26"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x27"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x28"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x29"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x2f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x30"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x31"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x32"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x33"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x34"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x35"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x36"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x37"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x38"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x39"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3d"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x3e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x3f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x40"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x41"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x42"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x43"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x44"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x45"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x46"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x47"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x48"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x49"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x4f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x50"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x51"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x52"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x53"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x54"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x55"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x56"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x57"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x58"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x59"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x5d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x5f"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x60"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x61"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x62"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x63"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x64"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x65"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x66"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x67"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x68"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x69"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6a"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6b"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6c"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6e"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x6f"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x70"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x71"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x72"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x73"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x74"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x75"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x76"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x77"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x78"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x79"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7a"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7b"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7c"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7d"
+                },
+                {
+                    "isAllowed": true,
+                    "metachar": "0x7e"
+                },
+                {
+                    "isAllowed": false,
+                    "metachar": "0x7f"
+                }
+            ]
+        }
+		],
+		"response-pages": [
+		{
+            "responseActionType": "erase-cookies",
+            "responsePageType": "hijack",
+        },
+        {
+            "responseActionType": "default",
+            "responsePageType": "failed-login-honeypot",
+        },
+        {
+            "ajaxActionType": "alert-popup",
+            "responsePageType": "leaked-credentials-ajax",
+            "ajaxPopupMessage": "These username and password were found in the Leaked Credentials Data Base. They maybe used by attackers to compromise your account. Please change password.",
+        },
+        {
+            "responseRedirectUrl": "https://google.com",
+            "responseActionType": "redirect",
+            "responsePageType": "default",
+        },
+        {
+            "ajaxActionType": "alert-popup",
+            "responsePageType": "ajax-login",
+            "ajaxPopupMessage": "The requested URL was rejected. Please consult with your administrator. Your support ID is: <%TS.request.ID()%>",
+        },
+        {
+            "responseActionType": "default",
+            "responsePageType": "captcha",
+        },
+        {
+            "responseActionType": "default",
+            "responsePageType": "leaked-credentials",
+        },
+        {
+            "responseActionType": "soap-fault",
+            "responsePageType": "xml",
+        },
+        {
+            "responseActionType": "default",
+            "responsePageType": "captcha-fail",
+        },
+        {
+            "responseActionType": "default",
+            "responsePageType": "mobile",
+        },
+        {
+            "ajaxPopupMessage": "The requested URL was rejected. Please consult with your administrator. Your support ID is: <%TS.request.ID()%>",
+            "ajaxEnabled": false,
+            "ajaxActionType": "alert-popup",
+            "responsePageType": "ajax",
+        },
+        {
+            "ajaxActionType": "alert-popup",
+            "responsePageType": "failed-login-honeypot-ajax",
+            "ajaxPopupMessage": "Login Failed. Username or password is incorrect. Please try to log in again.",
+        }
+		],
+		"urls": [
+		{
+		    "name": "*",			
+			"type": "wildcard",
+            "description": "",
+            "clickjackingProtection": false,			
+            "metacharsOnUrlCheck": true,
+            "attackSignaturesCheck": true			
+		}
+		],
+		"parameters": [
+		{
+			"name": "*",
+			"type": "wildcard",
+            "checkMetachars": true,
+            "sensitiveParameter": false,
+            "metacharsOnParameterNameCheck": true,
+            "metacharsOnParameterValueCheck": true,
+            "checkMaxValueLength": false,
+			"maximumLength": 100,
+            "attackSignaturesCheck": true,
+			"signatureOverrides": [],
+		    "nameMetacharOverrides": [],
+			"valueMetacharOverrides": []			
+		}
+		],
+		"sensitive-parameters": [
+		    {"name": "password"}
+		],
+		"cookies": [
+			{
+				"name": "*",
+				"type": "wildcard",
+				"accessibleOnlyThroughTheHttpProtocol": false,
+				"attackSignaturesCheck": true,
+				"enforcementType": "allow",
+				"isBase64": false,
+				"maskValueInLogs": false,
+				"securedOverHttpsConnection": false,
+				"signatureOverrides": []
+			}
+		]
+	}		
+}
