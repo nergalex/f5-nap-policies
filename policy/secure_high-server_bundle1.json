@@ -91,7 +91,7 @@
     },
     "server-technologies": [
             {
-                "serverTechnologyName": "MongoDB"
+                "serverTechnologyName": "Django"
             },
             {
                 "serverTechnologyName": "Unix/Linux"
