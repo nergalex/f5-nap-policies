@@ -37,6 +37,6 @@
     ]
   },
   "filetypeReference": {
-      "link": "http://domain.com:8081/file-types.txt"
+      "link": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/external_references/filetype_medium.json"
   }
 }
