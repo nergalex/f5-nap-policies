@@ -1,11 +1,11 @@
-enforcementMode: blocking
-name: secure-medium-v1.0.0
-applicationLanguage: utf-8
-template:
-  name: POLICY_TEMPLATE_NGINX_BASE
-server-technologies:
-- serverTechnologyName: Unix/Linux
-- serverTechnologyName: Nginx
-- serverTechnologyName: PHP
-- serverTechnologyName: JavaScript
-- serverTechnologyName: PostgreSQL
+    enforcementMode: blocking
+    name: secure-medium-v1.0.0
+    applicationLanguage: utf-8
+    template:
+      name: POLICY_TEMPLATE_NGINX_BASE
+    server-technologies:
+    - serverTechnologyName: Unix/Linux
+    - serverTechnologyName: Nginx
+    - serverTechnologyName: PHP
+    - serverTechnologyName: JavaScript
+    - serverTechnologyName: PostgreSQL
