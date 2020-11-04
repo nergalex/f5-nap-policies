@@ -6,8 +6,8 @@ spec:
     template:
       name: POLICY_TEMPLATE_NGINX_BASE
     server-technologies:
-    - serverTechnologyName: Unix/Linux
-    - serverTechnologyName: Nginx
-    - serverTechnologyName: PHP
-    - serverTechnologyName: JavaScript
-    - serverTechnologyName: PostgreSQL
+      - serverTechnologyName: Unix/Linux
+      - serverTechnologyName: Nginx
+      - serverTechnologyName: PHP
+      - serverTechnologyName: JavaScript
+      - serverTechnologyName: PostgreSQL
