@@ -15,4 +15,4 @@ blocking-settings:
     alarm: true
     block: true
 filetypeReference:
-  link: https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/external_references/filetype_medium.json
+  link: https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/external_references/filetype_high.json
