@@ -1,5 +1,5 @@
 enforcementMode: blocking
-name: secure-low-v1.0.0
+name: secure-high-v1.0.0
 applicationLanguage: utf-8
 template:
   name: POLICY_TEMPLATE_NGINX_BASE
