@@ -1,0 +1,42 @@
+{
+  "enforcementMode": "blocking",
+  "name": "techno-bot-v1",
+  "applicationLanguage": "utf-8",
+  "template": {
+    "name": "POLICY_TEMPLATE_NGINX_BASE"
+  },
+  "server-technologies": [
+    {
+      "serverTechnologyName": "Unix/Linux"
+    },
+    {
+      "serverTechnologyName": "Nginx"
+    },
+    {
+      "serverTechnologyName": "PHP"
+    },
+    {
+      "serverTechnologyName": "JavaScript"
+    },
+    {
+      "serverTechnologyName": "PostgreSQL"
+    }
+  ],
+  "blocking-settings": {
+    "violations": [
+      {
+        "name": "VIOL_THREAT_CAMPAIGN",
+        "alarm": true,
+        "block": true
+      },
+      {
+          "name": "VIOL_FILETYPE",
+          "alarm": true,
+          "block": true
+      }
+    ]
+  },
+  "filetypeReference": {
+      "link": "http://domain.com:8081/file-types.txt"
+  }
+}
