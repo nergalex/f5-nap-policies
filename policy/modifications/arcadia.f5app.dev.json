@@ -32,12 +32,13 @@
     },
     {
       "entityChanges": {
-        "type": "explicit"
+        "type": "explicit",
+        "enabled": false
       },
       "entity": {
         "name": "md"
       },
-      "action": "delete",
+      "action": "add-or-update",
       "entityType": "filetype"
     }
   ]
