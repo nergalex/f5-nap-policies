@@ -37,7 +37,7 @@
       "entity": {
         "name": "md"
       },
-      "action": "add-or-update",
+      "action": "delete",
       "entityType": "filetype"
     }
   ]
