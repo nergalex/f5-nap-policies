@@ -20,9 +20,5 @@
     {
         "name": "md",
         "allowed": false
-    },
-    {
-        "name": "png",
-        "allowed": false
     }
 ]
