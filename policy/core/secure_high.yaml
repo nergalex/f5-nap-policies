@@ -5,7 +5,7 @@
       name: POLICY_TEMPLATE_NGINX_BASE
     server-technologies:
     - serverTechnologyName: Unix/Linux
-    - serverTechnologyName: Nginx
+    - serverTechnologyName: Apache/NCSA HTTP Server
     - serverTechnologyName: PHP
     - serverTechnologyName: JavaScript
     - serverTechnologyName: PostgreSQL
@@ -14,5 +14,10 @@
       - name: VIOL_FILETYPE
         alarm: true
         block: true
+      - name: VIOL_EVASION
+        alarm: true
+        block: true
     filetypeReference:
       link: https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/external_references/filetype_high.json
+    evasionReference:
+      link: https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/external_references/evasion_high.json
