@@ -39,6 +39,16 @@
       },
       "action": "delete",
       "entityType": "filetype"
+    },
+    {
+      "entityChanges": {
+        "type": "explicit"
+      },
+      "entity": {
+        "name": "png"
+      },
+      "action": "delete",
+      "entityType": "filetype"
     }
   ]
 }
