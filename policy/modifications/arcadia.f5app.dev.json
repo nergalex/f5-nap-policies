@@ -29,16 +29,6 @@
       },
       "action": "delete",
       "entityType": "filetype"
-    },
-    {
-      "entityChanges": {
-        "type": "explicit"
-      },
-      "entity": {
-        "name": "md"
-      },
-      "action": "delete",
-      "entityType": "filetype"
     }
   ]
 }
