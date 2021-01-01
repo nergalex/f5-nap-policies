@@ -1,0 +1,33 @@
+{
+  "policy": {
+    "enforcementMode": "blocking",
+    "name": "secure-medium-v1.0.0",
+    "applicationLanguage": "utf-8",
+    "template": {
+      "name": "POLICY_TEMPLATE_NGINX_BASE"
+    },
+    "server-technologies": [
+      {
+        "serverTechnologyName": "Unix/Linux"
+      },
+      {
+        "serverTechnologyName": "Nginx"
+      },
+      {
+        "serverTechnologyName": "PHP"
+      },
+      {
+        "serverTechnologyName": "JavaScript"
+      },
+      {
+        "serverTechnologyName": "PostgreSQL"
+      }
+    ],
+    "open-api-files": [
+      {
+          "link": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/open-api-files/f5-bigip.api.f5app.dev.json"
+      }
+    ]
+  },
+  "modificationsReference": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/modifications/f5-bigip.api.f5app.dev.json"
+}
