@@ -254,6 +254,33 @@
           }
         ]
       }
+    },
+    "/mgmt/shared/appsvcs/declare": {
+      "post": {
+        "tags": [
+          "as3"
+        ],
+        "summary": "Task 0. Create App",
+        "description": "Create an application service",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/as3"
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "processing"
+          }
+        },
+        "security": [
+          {
+            "application": [
+              "write:bigip"
+            ]
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -331,6 +358,15 @@
             "schema": {
               "$ref": "#/components/schemas/apply_waf_policy"
             }
+          }
+        },
+        "required": true
+      },
+      "as3": {
+        "description": "as3",
+        "content": {
+          "application/json": {
+            "schema": {}
           }
         },
         "required": true
