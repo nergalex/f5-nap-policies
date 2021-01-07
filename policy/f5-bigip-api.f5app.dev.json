@@ -100,10 +100,12 @@
        ]
     },
     "open-api-files": [
-    {
+       {
         "link": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/open-api-files/f5-bigip.api.f5app.dev.json"
-    }
+       }
     ]
   },
-  "modificationsReference": {"link": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/modifications/f5-bigip.api.f5app.dev.json"}
+  "modificationsReference": {
+     "link": "https://raw.githubusercontent.com/nergalex/f5-nap-policies/master/policy/modifications/f5-bigip.api.f5app.dev.json"
+  }
 }
