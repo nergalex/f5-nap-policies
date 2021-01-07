@@ -1,0 +1,32 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Allowed API Flow to consume your F5 BIG-IP API",
+    "version": "1.0.0",
+    "title": "F5 BIG-IP API consumed by external App",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "al.dacosta@f5.com"
+    }
+  },
+  "host": "f5.api.f5cloudbuilder.dev",
+  "basePath": "/v1",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/mgmt/tm/asm/policies": {
+      "get": {
+        "summary": "Task 1. GET Policy ID",
+        "description": "GET policy ID in response key: items.0.id, noted as var_waf_policy_id is further tasks",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
