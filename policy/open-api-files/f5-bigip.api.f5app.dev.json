@@ -6,21 +6,19 @@
     "contact": {
       "email": "al.dacosta@f5.com"
     },
-    "version": "1.0.1"
+    "version": "1.0.0"
   },
-  "basePath": "/v1",
-  "schemes": ["http","https"],
   "servers": [
     {
       "url": "https://virtserver.swaggerhub.com/CloudBuilder/f5_bigip/1.0.0",
       "description": "SwaggerHub API Auto Mocking"
     },
     {
-      "url": "f5-bigip-api.f5app.dev",
+      "url": "https://f5.api.f5cloudbuilder.dev",
       "description": "API GW - F5 BIG-IP"
     },
     {
-      "url": "dev.f5.api.f5cloudbuilder.dev",
+      "url": "https://dev.f5.api.f5cloudbuilder.dev",
       "description": "Dev Portal - F5 BIG-IP"
     }
   ],
