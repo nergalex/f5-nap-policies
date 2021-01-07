@@ -1,0 +1,22 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "F5 BIG-IP API consumed by external App",
+    "description": "Allowed API Flow to consume your F5 BIG-IP API",
+    "contact": {
+      "email": "al.dacosta@f5.com"
+    },
+    "version": "1.0.1"
+  },
+  "paths": {
+    "/mgmt/tm/asm/policies": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
