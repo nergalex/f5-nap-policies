@@ -8,34 +8,9 @@
     },
     "version": "1.0.1"
   },
-  "servers": [
-    {
-      "url": "https://virtserver.swaggerhub.com/CloudBuilder/f5_bigip/1.0.0",
-      "description": "SwaggerHub API Auto Mocking"
-    },
-    {
-      "url": "https://f5.api.f5cloudbuilder.dev",
-      "description": "API GW - F5 BIG-IP"
-    },
-    {
-      "url": "https://dev.f5.api.f5cloudbuilder.dev",
-      "description": "Dev Portal - F5 BIG-IP"
-    }
-  ],
-  "tags": [
-    {
-      "name": "waf_update_swagger",
-      "description": "Update WAF policy using your latest App's spec (swagger file)"
-    }
-  ],
   "paths": {
     "/mgmt/tm/asm/policies": {
       "get": {
-        "tags": [
-          "waf_update_swagger"
-        ],
-        "summary": "Task 1. GET Policy ID",
-        "description": "GET policy ID in response key: items.0.id, noted as var_waf_policy_id is further tasks",
         "responses": {
           "200": {
             "description": "OK"
