@@ -10,16 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://virtserver.swaggerhub.com/CloudBuilder/f5_bigip/1.0.0",
-      "description": "SwaggerHub API Auto Mocking"
-    },
-    {
-      "url": "https://f5.api.f5cloudbuilder.dev",
-      "description": "API GW - F5 BIG-IP"
-    },
-    {
-      "url": "https://dev.f5.api.f5cloudbuilder.dev",
-      "description": "Dev Portal - F5 BIG-IP"
+      "url": "https://f5-bigip-api.f5app.dev/v1"
     }
   ],
   "tags": [
