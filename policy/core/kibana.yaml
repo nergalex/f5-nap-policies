@@ -1,6 +1,6 @@
   policy:
-    name: "kibana"
-    enforcementMode: blocking
+    name: kibana
+    enforcementMode: transparent
     applicationLanguage: utf-8
     template:
       name: POLICY_TEMPLATE_NGINX_BASE
