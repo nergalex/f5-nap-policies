@@ -17,17 +17,17 @@ paths:
           description: a randomly composed name
       servers:
         - url: 'http://generator:80'
-  /name:
-    get:
-      description: generate composed name for FrontEnd App
-      operationId: generateName
-      tags:
-        - generator
-      responses:
-        '200':
-          description: a randomly composed name
-      servers:
-        - url: 'http://generator:80'
+#  /name:
+#    get:
+#      description: generate composed name for FrontEnd App
+#      operationId: generateName
+#      tags:
+#        - generator
+#      responses:
+#        '200':
+#          description: a randomly composed name
+#      servers:
+#        - url: 'http://generator:80'
   /colors:
     get:
       description: List all colors
@@ -286,8 +286,6 @@ paths:
               # examples: {"adjectives": [{"id":1,"name":"lion"}]}
       servers:
         - url: 'http://animals:8080'
-
-
   /locations:
     get:
       description: List all locations
@@ -438,5 +436,3 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Location"
-
-
