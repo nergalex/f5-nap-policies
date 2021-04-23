@@ -18,9 +18,9 @@
        - block: true
          description: JSON data does not comply with JSON schema
          name: VIOL_JSON_SCHEMA
-       - block: true
-         description: Illegal parameter array value
-         name: VIOL_PARAMETER_ARRAY_VALUE
+#       - block: true
+#         description: Illegal parameter array value
+#         name: VIOL_PARAMETER_ARRAY_VALUE
        - block: true
          description: Illegal Base64 value
          name: VIOL_PARAMETER_VALUE_BASE64
@@ -42,9 +42,9 @@
        - block: true
          description: Illegal parameter numeric value
          name: VIOL_PARAMETER_NUMERIC_VALUE
-       - block: true
-         description: Parameter value does not comply with regular expression
-         name: VIOL_PARAMETER_VALUE_REGEXP
+#       - block: true
+#         description: Parameter value does not comply with regular expression
+#         name: VIOL_PARAMETER_VALUE_REGEXP
        - block: true
          description: Illegal URL
          name: VIOL_URL
