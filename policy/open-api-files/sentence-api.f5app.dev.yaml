@@ -6,6 +6,24 @@ info:
 #servers:
 #  - url: 'http://gw_attributes:8080'
 paths:
+  /_codexch:
+    get:
+      description: OpenID Connect authentication - code exchange
+      operationId: codeExchange
+      tags:
+        - oidc
+      responses:
+        '302':
+          description: sends redirect to original uri
+  /logout:
+    get:
+      description: OpenID Connect authentication - logout
+      operationId: logout
+      tags:
+        - oidc
+      responses:
+        '302':
+          description: sends redirect to original uri
   /:
     get:
       description: generate composed name
