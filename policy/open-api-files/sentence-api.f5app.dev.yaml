@@ -12,6 +12,23 @@ paths:
       operationId: codeExchange
       tags:
         - oidc
+      parameters:
+        - name: code
+          in: path
+          description: authorization code
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: state
+          in: path
+          description: anti replay
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         '302':
           description: sends redirect to original uri
@@ -22,7 +39,7 @@ paths:
       tags:
         - oidc
       responses:
-        '302':
+        '200':
           description: sends redirect to original uri
   /:
     get:
