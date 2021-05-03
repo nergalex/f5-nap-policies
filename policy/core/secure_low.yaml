@@ -5,5 +5,5 @@
     blocking-settings:
       violations:
       - name: VIOL_HTTP_RESPONSE_STATUS
-        alarm: false
-        block: false
+        alarm: true
+        block: true
