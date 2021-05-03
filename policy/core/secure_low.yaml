@@ -2,3 +2,8 @@
     applicationLanguage: utf-8
     template:
       name: POLICY_TEMPLATE_NGINX_BASE
+    blocking-settings:
+      violations:
+      - name: VIOL_HTTP_RESPONSE_STATUS
+        alarm: true
+        block: false
