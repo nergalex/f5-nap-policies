@@ -4,6 +4,9 @@
       name: POLICY_TEMPLATE_NGINX_BASE
     blocking-settings:
       violations:
-      - name: VIOL_HTTP_RESPONSE_STATUS
-        alarm: true
-        block: true
+        - name: VIOL_HTTP_RESPONSE_STATUS
+          alarm: true
+          block: true
+      signatures:
+        - signatureId: 200000128
+          enabled: false
