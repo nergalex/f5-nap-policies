@@ -1,0 +1,467 @@
+{
+   "policy" : {
+      "blocking-settings" : {
+         "http-protocols" : [
+            {
+               "description" : "Unescaped space in URL",
+               "enabled" : false
+            }
+         ],
+         "violations" : [
+            {
+               "block" : false,
+               "name" : "VIOL_BLACKLISTED_IP"
+            },
+            {
+               "block" : false,
+               "name" : "VIOL_COOKIE_MALFORMED"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_COOKIE_MODIFIED"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_CSRF"
+            },
+            {
+               "block" : true,
+               "name" : "VIOL_EVASION"
+            },
+            {
+               "block" : true,
+               "name" : "VIOL_FILE_UPLOAD_IN_BODY"
+            },
+            {
+               "block" : true,
+               "name" : "VIOL_GRPC_FORMAT"
+            },
+            {
+               "block" : true,
+               "name" : "VIOL_GRPC_METHOD"
+            },
+            {
+               "block" : false,
+               "name" : "VIOL_JSON_MALFORMED"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_MANDATORY_PARAMETER"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_MANDATORY_REQUEST_BODY"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_ARRAY_VALUE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_DATA_TYPE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_EMPTY_VALUE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_LOCATION"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_MULTIPART_NULL_VALUE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_NUMERIC_VALUE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_REPEATED"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_STATIC_VALUE"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_VALUE_BASE64"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_VALUE_LENGTH"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_PARAMETER_VALUE_REGEXP"
+            },
+            {
+               "alarm" : false,
+               "block" : false,
+               "name" : "VIOL_THREAT_CAMPAIGN"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_URL"
+            },
+            {
+               "alarm" : false,
+               "name" : "VIOL_URL_CONTENT_TYPE"
+            },
+            {
+               "block" : false,
+               "name" : "VIOL_XML_MALFORMED"
+            }
+         ]
+      },
+      "bot-defense" : {
+         "settings" : {
+            "isEnabled" : false
+         }
+      },
+      "caseInsensitive" : false,
+      "character-sets" : [
+         {
+            "characterSet" : [
+               {
+                  "isAllowed" : false,
+                  "metachar" : "0x20"
+               }
+            ],
+            "characterSetType" : "json-content"
+         }
+      ],
+      "cookies" : [
+         {
+            "decodeValueAsBase64" : "disabled",
+            "enforcementType" : "allow",
+            "name" : "*",
+            "type" : "wildcard",
+            "wildcardOrder" : 1
+         }
+      ],
+      "csrf-urls" : [],
+      "description" : "Based on NGINX App Protect API Security template Policy",
+      "enablePassiveMode" : false,
+      "enforcementMode" : "blocking",
+      "enforcer-settings" : {
+         "enforcerStateCookies" : {
+            "httpOnlyAttribute" : false,
+            "sameSiteAttribute" : "none",
+            "secureAttribute" : "never"
+         }
+      },
+      "filetypes" : [
+         {
+            "allowed" : true,
+            "checkPostDataLength" : true,
+            "checkQueryStringLength" : true,
+            "checkRequestLength" : true,
+            "checkUrlLength" : true,
+            "name" : "no_ext",
+            "postDataLength" : 1000,
+            "queryStringLength" : 1000,
+            "requestLength" : 5000,
+            "responseCheck" : false,
+            "type" : "explicit",
+            "urlLength" : 100
+         }
+      ],
+      "fullPath" : "/Common/arcadia",
+      "headers" : [
+         {
+            "checkSignatures" : true,
+            "decodeValueAsBase64" : "disabled",
+            "name" : "*",
+            "type" : "wildcard",
+            "wildcardOrder" : 1
+         },
+         {
+            "allowRepeatedOccurrences" : true,
+            "name" : "cookie",
+            "type" : "explicit"
+         },
+         {
+            "checkSignatures" : true,
+            "decodeValueAsBase64" : "disabled",
+            "name" : "referer",
+            "type" : "explicit"
+         },
+         {
+            "checkSignatures" : true,
+            "name" : "transfer-encoding",
+            "normalizationViolations" : false,
+            "type" : "explicit",
+            "urlNormalization" : false
+         }
+      ],
+      "name" : "arcadia",
+      "parameters" : [
+         {
+            "allowEmptyValue" : true,
+            "allowRepeatedParameterName" : true,
+            "attackSignaturesCheck" : true,
+            "checkMaxValueLength" : false,
+            "checkMinValueLength" : false,
+            "dataType" : "alpha-numeric",
+            "decodeValueAsBase64" : "disabled",
+            "enableRegularExpression" : false,
+            "level" : "global",
+            "metacharsOnParameterValueCheck" : true,
+            "name" : "*",
+            "valueType" : "user-input"
+         }
+      ],
+      "server-technologies" : [
+         {
+            "serverTechnologyName" : "Apache/NCSA HTTP Server"
+         },
+         {
+            "serverTechnologyName" : "JavaScript"
+         },
+         {
+            "serverTechnologyName" : "Nginx"
+         },
+         {
+            "serverTechnologyName" : "PHP"
+         },
+         {
+            "serverTechnologyName" : "PostgreSQL"
+         },
+         {
+            "serverTechnologyName" : "Unix/Linux"
+         },
+         {
+            "serverTechnologyName" : "WordPress"
+         },
+         {
+            "serverTechnologyName" : "XML"
+         }
+      ],
+      "signature-sets" : [
+         {
+            "alarm" : true,
+            "block" : false,
+            "name" : "Generic Detection Signatures"
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "Generic Detection Signatures (High/Medium Accuracy)"
+         },
+         {
+            "$action" : "delete",
+            "name" : "Directory Indexing Signatures"
+         },
+         {
+            "$action" : "delete",
+            "name" : "High Accuracy Signatures"
+         },
+         {
+            "alarm" : true,
+            "block" : false,
+            "name" : "XML Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "XML Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "XML"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : false,
+            "name" : "PHP Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "PHP Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "PHP"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "Unix/Linux Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "Unix/Linux Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "Unix/Linux"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "Nginx Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "Nginx Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "Nginx"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "Apache/NCSA HTTP Server Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "Apache/NCSA HTTP Server Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "Apache"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "JavaScript Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "JavaScript Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "JavaScript"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "alarm" : true,
+            "block" : true,
+            "name" : "PostgreSQL Signatures (High/Medium Accuracy)",
+            "signatureSet" : {
+               "filter" : {
+                  "accuracyFilter" : "ge",
+                  "accuracyValue" : "medium",
+                  "hasCve" : "all",
+                  "lastUpdatedFilter" : "all",
+                  "riskFilter" : "all",
+                  "riskValue" : "all",
+                  "signatureType" : "all",
+                  "tagFilter" : "all",
+                  "userDefinedFilter" : "all"
+               },
+               "name" : "PostgreSQL Signatures (High/Medium Accuracy)",
+               "systems" : [
+                  {
+                     "name" : "PostgreSQL"
+                  }
+               ],
+               "type" : "filter-based"
+            }
+         },
+         {
+            "$action" : "delete",
+            "name" : "Vulnerability Scan Signatures"
+         },
+         {
+            "$action" : "delete",
+            "name" : "CVE Signatures"
+         },
+         {
+            "$action" : "delete",
+            "name" : "XML External Entities (XXE) Signatures"
+         }
+      ],
+      "signature-settings" : {},
+      "template" : {
+         "name" : "POLICY_TEMPLATE_NGINX_BASE"
+      },
+      "urls" : [
+         {
+            "metacharsOnUrlCheck" : false,
+            "method" : "*",
+            "name" : "*",
+            "protocol" : "http",
+            "type" : "wildcard"
+         }
+      ]
+   }
+}
