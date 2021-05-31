@@ -1,0 +1,52 @@
+{
+   "policy": {
+      "name": "arcadia",
+      "description": "Based on NGINX App Protect API Security template Policy",
+      "enforcementMode": "blocking",
+      "applicationLanguage": "utf-8",
+      "template": {
+         "name": "POLICY_TEMPLATE_NGINX_BASE"
+      },
+      "server-technologies": [
+         {
+            "serverTechnologyName": "Unix/Linux"
+         },
+         {
+            "serverTechnologyName": "Nginx"
+         },
+         {
+            "serverTechnologyName": "Apache/NCSA HTTP Server"
+         },
+         {
+            "serverTechnologyName": "PHP"
+         },
+         {
+            "serverTechnologyName": "JavaScript"
+         },
+         {
+            "serverTechnologyName": "PostgreSQL"
+         }
+      ],
+      "bot-defense": {
+         "settings": {
+            "isEnabled": true
+         },
+         "mitigations": {
+            "classes": [
+               {
+                  "name": "trusted-bot",
+                  "action": "alarm"
+               },
+               {
+                  "name": "untrusted-bot",
+                  "action": "block"
+               },
+               {
+                  "name": "malicious-bot",
+                  "action": "block"
+               }
+            ]
+         }
+      }
+   }
+}
