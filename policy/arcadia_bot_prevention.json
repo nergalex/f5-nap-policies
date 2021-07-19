@@ -1,6 +1,6 @@
 {
    "policy": {
-      "name": "arcadia_web_factory",
+      "name": "arcadia_bot_prevention",
       "description": "Based on NGINX App Protect API Security template Policy",
       "enforcementMode": "blocking",
       "applicationLanguage": "utf-8",
@@ -35,11 +35,11 @@
             "classes": [
                {
                   "name": "trusted-bot",
-                  "action": "alarm"
+                  "action": "block"
                },
                {
                   "name": "untrusted-bot",
-                  "action": "alarm"
+                  "action": "block"
                },
                {
                   "name": "malicious-bot",
@@ -50,7 +50,7 @@
       },
       "response-pages": [
          {
-            "responseContent": "<html><head><title>Arcadia Web Factory</title></head><body><h1>Blocking page</h1><br><br>Support = <%TS.request.ID()%></body></html>",
+            "responseContent": "<html><head><title>Bot prevention</title></head><body><h1>Blocking page</h1><br><br>Support = <%TS.request.ID()%></body></html>",
             "responseHeader": "HTTP/1.1 200 OK\r\nConnection: close",
             "responseActionType": "custom",
             "responsePageType": "default"
