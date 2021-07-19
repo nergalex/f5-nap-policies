@@ -1,0 +1,67 @@
+{
+   "policy": {
+      "name": "arcadia",
+      "description": "Based on NGINX App Protect API Security template Policy",
+      "enforcementMode": "blocking",
+      "applicationLanguage": "utf-8",
+      "template": {
+         "name": "POLICY_TEMPLATE_NGINX_BASE"
+      },
+      "server-technologies": [
+         {
+            "serverTechnologyName": "Unix/Linux"
+         },
+         {
+            "serverTechnologyName": "Nginx"
+         },
+         {
+            "serverTechnologyName": "Apache/NCSA HTTP Server"
+         },
+         {
+            "serverTechnologyName": "PHP"
+         },
+         {
+            "serverTechnologyName": "JavaScript"
+         },
+         {
+            "serverTechnologyName": "PostgreSQL"
+         }
+      ],
+      "bot-defense": {
+         "settings": {
+            "isEnabled": true
+         },
+         "mitigations": {
+            "classes": [
+               {
+                  "name": "trusted-bot",
+                  "action": "alarm"
+               },
+               {
+                  "name": "untrusted-bot",
+                  "action": "block"
+               },
+               {
+                  "name": "malicious-bot",
+                  "action": "block"
+               }
+            ]
+         }
+      },
+      "response-pages": [
+         {
+            "responseContent": "<html><head><title>Arcadia Web Factory</title></head><body><h1>Blocking page</h1><br><br>Support = <%TS.request.ID()%></body></html>",
+            "responseHeader": "HTTP/1.1 200 OK\r\nConnection: close",
+            "responseActionType": "custom",
+            "responsePageType": "default"
+         }
+      ],
+      "whitelist-ips": [
+         {
+            "blockRequests": "always",
+            "ipAddress": "1.1.1.1",
+            "ipNetmask": "255.255.255.255"
+         }
+      ]
+   }
+}
