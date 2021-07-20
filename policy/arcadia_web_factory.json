@@ -50,7 +50,7 @@
       },
       "response-pages": [
          {
-            "responseContent": "<html><head><title>Arcadia Web Factory</title></head><body><h1>Blocking page 3</h1><br><br>Support = <%TS.request.ID()%></body></html>",
+            "responseContent": "<html><head><title>Arcadia Web Factory</title></head><body><h1>Blocking page 4</h1><br><br>Support = <%TS.request.ID()%></body></html>",
             "responseHeader": "HTTP/1.1 200 OK\r\nConnection: close",
             "responseActionType": "custom",
             "responsePageType": "default"
