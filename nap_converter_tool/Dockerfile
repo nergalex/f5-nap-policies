@@ -1,3 +1,4 @@
+# source: https://docs.nginx.com/nginx-app-protect/admin-guide/install/
 # For CentOS 7:
 FROM centos:7.4.1708
 
