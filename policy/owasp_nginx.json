@@ -237,7 +237,7 @@
             "classes": [
                {
                   "name": "trusted-bot",
-                  "action": "allow"
+                  "action": "ignore"
                },
                {
                   "name": "untrusted-bot",
