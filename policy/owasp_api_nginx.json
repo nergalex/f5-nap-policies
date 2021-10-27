@@ -9,6 +9,18 @@
         {
             "name": "POLICY_TEMPLATE_NGINX_BASE"
         },
+        "urls":
+        [
+            {
+                "name": "/_codexch",
+                "type": "explicit",
+                "method": "GET",
+                "isAllowed": true,
+                "wildcardOrder": 0,
+                "attackSignaturesCheck": false,
+                "metacharsOnUrlCheck": false
+            }
+        ],
         "blocking-settings":
         {
             "violations":
