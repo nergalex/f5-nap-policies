@@ -1,0 +1,24 @@
+{
+  "modifications": [
+    {
+      "entityType": "signature",
+      "entity": {
+        "signatureId": 200001834
+      },
+      "entityChanges": {
+        "enabled": false
+      },
+      "action": "add-or-update"
+    },
+    {
+      "entityType": "signature",
+      "entity": {
+        "signatureId": 200004461
+      },
+      "entityChanges": {
+        "enabled": false
+      },
+      "action": "add-or-update"
+    }
+  ]
+}
