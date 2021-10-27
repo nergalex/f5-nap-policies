@@ -2,9 +2,8 @@
     template:
      name: POLICY_TEMPLATE_NGINX_BASE
     urls:
-      - name: "/_codexch"
-        type: explicit
-        method: GET
+      - name: "/_codexch*"
+        type: wildcard
         isAllowed: true
         wildcardOrder: 0
         attackSignaturesCheck: false
