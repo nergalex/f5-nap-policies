@@ -1,6 +1,7 @@
     description: Based on NGINX App Protect API Security template Policy
     template:
      name: POLICY_TEMPLATE_NGINX_BASE
+    enforcementMode: transparent
     urls:
       - name: "/_codexch*"
         type: wildcard
