@@ -288,7 +288,7 @@
       },
       "description" : "A basic, OWASP Top 10 protection items v1.0",
       "enablePassiveMode" : false,
-      "enforcementMode" : "transparent",
+      "enforcementMode" : "blocking",
       "enforcer-settings" : {
          "enforcerStateCookies" : {
             "httpOnlyAttribute" : false,
