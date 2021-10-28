@@ -3,8 +3,8 @@
      name: POLICY_TEMPLATE_NGINX_BASE
     enforcementMode: blocking
     urls:
-      - name: "/_codexch*"
-        type: wildcard
+      - name: "/_codexch"
+        type: explicit
         isAllowed: true
         wildcardOrder: 0
         attackSignaturesCheck: false
