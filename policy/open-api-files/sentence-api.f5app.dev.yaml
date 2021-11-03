@@ -34,6 +34,9 @@ paths:
       operationId: OIDC
       tags:
         - OIDC
+      responses:
+        '302':
+          description: redirect to original uri
   /colors:
     get:
       description: List all colors
