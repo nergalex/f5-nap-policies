@@ -28,6 +28,12 @@ paths:
 #          description: a randomly composed name
 #      servers:
 #        - url: 'http://generator:80'
+  /_codexch:
+    get:
+      description: OIDC code exchange
+      operationId: OIDC
+      tags:
+        - OIDC
   /colors:
     get:
       description: List all colors
