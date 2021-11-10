@@ -2615,7 +2615,6 @@ Connection: close</response_header>
       <in_classification>false</in_classification>
       <disallow_file_upload_of_executables>true</disallow_file_upload_of_executables>
       <is_base64>false</is_base64>
-      <host_name_representation>domain-name</host_name_representation>
       <check_min_items_in_array>false</check_min_items_in_array>
       <check_max_items_in_array>false</check_max_items_in_array>
       <minimum_items_in_array>1</minimum_items_in_array>
@@ -2656,7 +2655,6 @@ Connection: close</response_header>
       <in_classification>false</in_classification>
       <disallow_file_upload_of_executables>true</disallow_file_upload_of_executables>
       <is_base64>false</is_base64>
-      <host_name_representation>domain-name</host_name_representation>
       <check_min_items_in_array>false</check_min_items_in_array>
       <check_max_items_in_array>false</check_max_items_in_array>
       <minimum_items_in_array>1</minimum_items_in_array>
