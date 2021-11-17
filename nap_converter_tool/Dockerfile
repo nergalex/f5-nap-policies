@@ -13,10 +13,9 @@ RUN yum -y install wget ca-certificates epel-release
 RUN wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nginx-plus-7.repo
 
 # Update the repository and install the most recent version of the NGINX App Protect Compiler package:
-RUN --mount=type=secret,id=nginx-crt,dst=/etc/ssl/nginx/nginx-repo.crt,mode=0644 \
-    --mount=type=secret,id=nginx-key,dst=/etc/ssl/nginx/nginx-repo.key,mode=0644 \
-    yum -y install app-protect-compiler \
+RUN yum -y install app-protect-compiler \
     && yum clean all \
-    && rm -rf /var/cache/yum
+    && rm -rf /var/cache/yum \
+    && rm -rf /etc/ssl/nginx
 
 CMD ["sh"]
