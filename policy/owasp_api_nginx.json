@@ -21,6 +21,11 @@
                 "metacharsOnUrlCheck": false
             }
         ],
+        "bot-defense": {
+            "settings": {
+                "isEnabled": false
+            }
+        },
         "blocking-settings":
         {
             "violations":
