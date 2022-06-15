@@ -86,7 +86,7 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: "#/components/schemas/Color"
+                $ref: "#/components/schemas/Adjective"
               # examples: {"adjectives": [{"id":1,"name":"blue"}]}
       servers:
         - url: 'http://adjectives:8080'
