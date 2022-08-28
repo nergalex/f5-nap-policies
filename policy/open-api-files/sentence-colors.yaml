@@ -7,7 +7,7 @@ servers:
   - url: http://colors/v0.1
     description: Development server
 paths:
-  /colors:
+  /:
     get:
       description: List all colors
       operationId: listColors
@@ -61,7 +61,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /colors/{id}:
+  /{id}:
     get:
       description: get a specific color
       operationId: showColorById

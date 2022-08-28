@@ -7,7 +7,7 @@ servers:
   - url: http://locations/v0.1
     description: Development server
 paths:
-  /locations:
+  /:
     get:
       description: List all locations
       operationId: listlocations
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /locations/{id}:
+  /{id}:
     get:
       description: get a specific location
       operationId: showLocationById

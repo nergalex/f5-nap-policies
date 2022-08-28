@@ -7,7 +7,7 @@ servers:
   - url: http://animals/v0.1
     description: Development server
 paths:
-  /animals:
+  /:
     get:
       description: List all animals
       operationId: listAnimals
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /animals/{id}:
+  /{id}:
     get:
       description: get a specific adjective
       operationId: showAnimalsById

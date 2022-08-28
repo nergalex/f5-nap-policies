@@ -7,7 +7,7 @@ servers:
   - url: http://adjectives/v0.1
     description: Development server
 paths:
-  /adjectives:
+  /:
     get:
       description: List all adjectives
       operationId: listAdjectives
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /adjectives/{id}:
+  /{id}:
     get:
       description: get a specific adjective
       operationId: showAdjectiveById
