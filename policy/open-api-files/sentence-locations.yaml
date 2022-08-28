@@ -3,6 +3,9 @@ info:
   title: locations
   description: location DB
   version: '0.1'
+servers:
+  - url: http://locations/v0.1
+    description: Development server
 paths:
   /locations:
     get:
@@ -18,8 +21,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Locations"
               #examples: {"animals": [{"id":1,"name":"mountain"}]}
-      servers:
-        - url: 'http://locations:8080'
     post:
       description: create an location
       operationId: createLocation
@@ -48,8 +49,6 @@ paths:
               schema:
                 type: string
               examples: {}
-      servers:
-        - url: 'http://locations:8080'
     delete:
       description: delete a location
       operationId: deleteLocation
@@ -63,10 +62,6 @@ paths:
               schema:
                 type: string
               examples: {}
-      servers:
-        - url: 'http://locations:8080'
-    servers:
-      - url: 'http://locations:8080'
   /locations/{id}:
     get:
       description: get a specific location
@@ -88,8 +83,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/Location"
               # examples: {"locations": [{"id":1,"name":"mountain"}]}
-      servers:
-        - url: 'http://locations:8080'
 components:
   schemas:
     Location:

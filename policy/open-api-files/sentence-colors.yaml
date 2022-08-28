@@ -3,6 +3,9 @@ info:
   title: colors
   description: color db
   version: '0.1'
+servers:
+  - url: http://colors/v0.1
+    description: Development server
 paths:
   /colors:
     get:
@@ -17,8 +20,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Colors"
-      servers:
-        - url: 'http://colors:8080'
     post:
       description: create a color
       operationId: createColor
@@ -47,8 +48,6 @@ paths:
               schema:
                 type: string
               examples: {}
-      servers:
-        - url: 'http://colors:8080'
     delete:
       description: delete a color
       operationId: deleteColor
@@ -62,10 +61,6 @@ paths:
               schema:
                 type: string
               examples: {}
-      servers:
-        - url: 'http://colors:8080'
-    servers:
-      - url: 'http://colors:8080'
   /colors/{id}:
     get:
       description: get a specific color
@@ -86,8 +81,6 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: "#/components/schemas/Color"
-      servers:
-        - url: 'http://colors:8080'
 components:
   schemas:
     Color:

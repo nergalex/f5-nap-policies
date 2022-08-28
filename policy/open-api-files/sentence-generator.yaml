@@ -3,6 +3,9 @@ info:
   title: generator
   description: generator
   version: '0.1'
+servers:
+  - url: http://generator/v0.1
+    description: Development server
 paths:
   /:
     get:
@@ -13,6 +16,3 @@ paths:
       responses:
         '200':
           description: a randomly composed name
-      servers:
-        - url: 'http://generator:80'
-
