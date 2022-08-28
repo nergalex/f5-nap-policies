@@ -4,7 +4,7 @@ info:
   description: location DB
   version: '0.1'
 servers:
-  - url: http://locations/v0.1
+  - url: http://sentence.dev/locations
     description: Development server
 paths:
   /:
