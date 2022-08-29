@@ -4,7 +4,7 @@ info:
   description: animal DB
   version: '0.1'
 servers:
-  - url: http://sentence.dev/0.1
+  - url: http://sentence.dev/animals
     description: Development server
 paths:
   /:

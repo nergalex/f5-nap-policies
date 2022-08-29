@@ -4,7 +4,7 @@ info:
   description: adjective db
   version: '0.1'
 servers:
-  - url: http://sentence.dev/0.1
+  - url: http://sentence.dev/adjectives
     description: Development server
 paths:
   /:
