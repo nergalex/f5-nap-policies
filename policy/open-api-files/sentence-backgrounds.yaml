@@ -38,11 +38,17 @@ paths:
         '200':
           description: Successful
           content:
-            image/jpeg
+            image/jpeg:
+              schema:
+                type: string
+              examples: {}
         '404':
           description: Absent
           content:
-            text/plain
+            text/plain:
+              schema:
+                type: string
+              examples: {}
 components:
   schemas:
     Background:
