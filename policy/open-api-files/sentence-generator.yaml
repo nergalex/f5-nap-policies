@@ -4,7 +4,7 @@ info:
   description: generator
   version: '0.1'
 servers:
-  - url: http://sentence.dev/generator
+  - url: http://sentence.dev/sentence
     description: Development server
 paths:
   /:
