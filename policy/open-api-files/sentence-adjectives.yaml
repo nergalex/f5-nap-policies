@@ -4,7 +4,7 @@ info:
   description: adjective db
   version: '0.1'
 servers:
-  - url: http://sentence.dev/api/sentence
+  - url: http://sentence.dev/api/ms-adjective
     description: Base Path
 paths:
   /adjectives:

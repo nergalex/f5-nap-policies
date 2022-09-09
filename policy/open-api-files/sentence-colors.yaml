@@ -4,7 +4,7 @@ info:
   description: color db
   version: '0.1'
 servers:
-  - url: http://sentence.dev/api/sentence
+  - url: http://sentence.dev/api/ms-color
     description: Base Path
 paths:
   /colors:
