@@ -4,7 +4,7 @@ info:
   description: location DB
   version: '0.1'
 servers:
-  - url: http://sentence.dev/api/ms-location
+  - url: http://sentence.dev/api/ms-locations
     description: Base Path
 paths:
   /locations:
