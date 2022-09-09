@@ -4,10 +4,10 @@ info:
   description: color db
   version: '0.1'
 servers:
-  - url: http://sentence.dev/colors
-    description: Development server
+  - url: http://sentence.dev/api/sentence
+    description: Base Path
 paths:
-  /:
+  /colors:
     get:
       description: List all colors
       operationId: listColors
@@ -61,7 +61,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /{id}:
+  /colors/{id}:
     get:
       description: get a specific color
       operationId: showColorById

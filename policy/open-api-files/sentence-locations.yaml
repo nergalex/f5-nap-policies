@@ -4,10 +4,10 @@ info:
   description: location DB
   version: '0.1'
 servers:
-  - url: http://sentence.dev/locations
-    description: Development server
+  - url: http://sentence.dev/api/sentence
+    description: Base Path
 paths:
-  /:
+  /locations:
     get:
       description: List all locations
       operationId: listlocations
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /{id}:
+  /locations/{id}:
     get:
       description: get a specific location
       operationId: showLocationById

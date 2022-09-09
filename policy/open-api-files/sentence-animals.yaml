@@ -4,10 +4,10 @@ info:
   description: animal DB
   version: '0.1'
 servers:
-  - url: http://sentence.dev/animals
-    description: Development server
+  - url: http://sentence.dev/api/sentence
+    description: Base Path
 paths:
-  /:
+  /animals:
     get:
       description: List all animals
       operationId: listAnimals
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /{id}:
+  /animals/{id}:
     get:
       description: get a specific adjective
       operationId: showAnimalsById

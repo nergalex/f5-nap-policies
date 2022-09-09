@@ -4,10 +4,10 @@ info:
   description: adjective db
   version: '0.1'
 servers:
-  - url: http://sentence.dev/adjectives
-    description: Development server
+  - url: http://sentence.dev/api/sentence
+    description: Base Path
 paths:
-  /:
+  /adjectives:
     get:
       description: List all adjectives
       operationId: listAdjectives
@@ -62,7 +62,7 @@ paths:
               schema:
                 type: string
               examples: {}
-  /{id}:
+  /adjectives/{id}:
     get:
       description: get a specific adjective
       operationId: showAdjectiveById
