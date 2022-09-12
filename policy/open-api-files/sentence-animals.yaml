@@ -50,10 +50,10 @@ paths:
                 type: string
               examples: {}
     delete:
-      description: delete an adjective
+      description: delete an animal
       operationId: deleteAnimal
       tags:
-        - adjectives
+        - animals
       responses:
         '404':
           description: Delete an Adjective
@@ -64,7 +64,7 @@ paths:
               examples: {}
   /animals/{id}:
     get:
-      description: get a specific adjective
+      description: get a specific animal
       operationId: showAnimalsById
       tags:
         - animals
@@ -82,7 +82,6 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: "#/components/schemas/Animal"
-              # examples: {"adjectives": [{"id":1,"name":"lion"}]}
 components:
   schemas:
     Animal:

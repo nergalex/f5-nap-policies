@@ -82,7 +82,6 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: "#/components/schemas/Adjective"
-              # examples: {"adjectives": [{"id":1,"name":"blue"}]}
 components:
   schemas:
     Adjective:
