@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: animals
-  description: animal DB
+  description: animal db
   version: '0.1'
 servers:
   - url: http://sentence.dev/api/ms-animals
@@ -20,9 +20,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Animals"
-              #examples: {"animals": [{"id":1,"name":"lion"}]}
     post:
-      description: create an animal
+      description: create a animal
       operationId: createAnimal
       tags:
         - animals
@@ -38,9 +37,9 @@ paths:
                   type: integer
             examples:
               '0':
-                value: '{"name":"cat"}'
+                value: '{"name":"horse"}'
               '1':
-                value: '{"id":2}'
+                value: '{"id":4}'
       responses:
         '201':
           description: animal created
@@ -50,13 +49,13 @@ paths:
                 type: string
               examples: {}
     delete:
-      description: delete an animal
+      description: delete a animal
       operationId: deleteAnimal
       tags:
         - animals
       responses:
         '404':
-          description: Delete an Adjective
+          description: Auto generated using Swagger Inspector
           content:
             application/json; charset=utf-8:
               schema:
@@ -65,7 +64,7 @@ paths:
   /animals/{id}:
     get:
       description: get a specific animal
-      operationId: showAnimalsById
+      operationId: showAnimalById
       tags:
         - animals
       parameters:
