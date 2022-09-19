@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: backgrounds
+  description: background DB
+  version: '0.1'
+servers:
+  - url: http://sentence.dev/backgrounds
+    description: Development server
+paths:
+  /:
+    get:
+      description: List all backgrounds
+      operationId: listbackgrounds
+      tags:
+        - backgrounds
+      responses:
+        '200':
+          description: a list of backgrounds with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/backgrounds"
+              #examples: {"animals": [{"id":1,"name":"mountain"}]}
+  /{id}:
+    get:
+      description: get a specific background
+      operationId: showBackgroundById
+      tags:
+        - backgrounds
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the background to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            image/jpeg:
+              schema:
+                type: string
+              examples: {}
+        '404':
+          description: Absent
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples: {}
+components:
+  schemas:
+    Background:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    backgrounds:
+      type: array
+      items:
+        $ref: "#/components/schemas/Background"

@@ -1,0 +1,100 @@
+openapi: 3.0.1
+info:
+  title: locations
+  description: location DB
+  version: '0.1'
+servers:
+  - url: http://sentence.dev/api/ms-locations/0.1
+    description: Base Path
+paths:
+  /locations:
+    get:
+      description: List all locations
+      operationId: listlocations
+      tags:
+        - locations
+      responses:
+        '200':
+          description: a list of locations with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Locations"
+    post:
+      description: create an location
+      operationId: createLocation
+      tags:
+        - locations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                id:
+                  type: integer
+            examples:
+              '0':
+                value: '{"name":"lake"}'
+              '1':
+                value: '{"id":2}'
+      responses:
+        '201':
+          description: location created
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+    delete:
+      description: delete a location
+      operationId: deleteLocation
+      tags:
+        - locations
+      responses:
+        '404':
+          description: Delete a Location
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+  /locations/{id}:
+    get:
+      description: get a specific location
+      operationId: showLocationById
+      tags:
+        - locations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the location to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Location"
+              # examples: {"locations": [{"id":1,"name":"mountain"}]}
+components:
+  schemas:
+    Location:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Locations:
+      type: array
+      items:
+        $ref: "#/components/schemas/Location"

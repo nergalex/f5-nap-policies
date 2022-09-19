@@ -1,0 +1,18 @@
+openapi: 3.0.1
+info:
+  title: generator
+  description: generator
+  version: '0.1'
+servers:
+  - url: http://sentence.dev/api/sentence
+    description: Development server
+paths:
+  /:
+    get:
+      description: generate composed name
+      operationId: generateName
+      tags:
+        - generator
+      responses:
+        '200':
+          description: a randomly composed name
