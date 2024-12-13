@@ -4,7 +4,7 @@ info:
   description: background DB
   version: '0.1'
 servers:
-  - url: http://sentence.dev/backgrounds
+  - url: http://sentence.dev/api/backgrounds
     description: Development server
 paths:
   /:

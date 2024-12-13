@@ -4,10 +4,10 @@ info:
   description: generator
   version: '0.1'
 servers:
-  - url: http://sentence.dev/sentence
+  - url: http://sentence.dev/api/sentence
     description: Development server
 paths:
-  /sentence:
+  /:
     get:
       description: generate composed name
       operationId: generateName
