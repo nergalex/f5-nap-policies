@@ -7,7 +7,7 @@ servers:
   - url: http://sentence.dev/sentence
     description: Development server
 paths:
-  /:
+  /sentence:
     get:
       description: generate composed name
       operationId: generateName
