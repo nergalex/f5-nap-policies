@@ -1,0 +1,22 @@
+components:
+  securitySchemes:
+    jwtBearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+info:
+  description: ''
+  title: juice-shop APIs
+  version: 0.0.2-oas3
+openapi: 3.0.3
+security:
+  - jwtBearerAuth: []
+paths:
+  /api/Addresss:
+    get:
+      description: get addresses
+      responses:
+        2XX:
+          description: ''
+        default:
+          description: ''
